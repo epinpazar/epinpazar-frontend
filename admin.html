@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head><title>Admin Paneli</title><script src="api.js"></script></head>
+<body>
+
+<h1>Admin Paneli</h1>
+<div id="list"></div>
+
+<script>
+async function load() {
+    const token = localStorage.token;
+    const res = await api("/api/admin/listings","GET",null,token);
+
+    const div = document.getElementById("list");
+    div.innerHTML = res.map(l => `
+        <div>
+            <h3>${l.title}</h3>
+            <button onclick="approve(${l.id})">Onayla</button>
+            <button onclick="del(${l.id})">Sil</button>
+        </div>
+    `).join("");
+}
+load();
+
+async function approve(id){
+    await api(`/api/admin/listings/${id}/approve`,"POST",{},localStorage.token);
+    load();
+}
+async function del(id){
+    await api(`/api/admin/listings/${id}`,"DELETE",{},localStorage.token);
+    load();
+}
+</script>
+
+</body>
+</html>

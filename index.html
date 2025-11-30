@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Epin Pazar</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="api.js"></script>
+</head>
+<body>
+
+<h1>Epin Pazar</h1>
+<a href="login.html">Giriş Yap</a>
+<a href="register.html">Kayıt Ol</a>
+<a href="create.html">İlan Oluştur</a>
+<a href="my-listings.html">İlanlarım</a>
+<a href="admin.html">Admin Paneli</a>
+
+<h2>Onaylı İlanlar</h2>
+<div id="list"></div>
+
+<script>
+async function load() {
+    const data = await api("/api/listings");
+    const div = document.getElementById("list");
+
+    div.innerHTML = data.map(l => `
+        <div class="card">
+            <img src="${API_BASE + l.imageUrl}" />
+            <h3>${l.title}</h3>
+            <p>${l.description}</p>
+            <a href="listing.html?id=${l.id}">İlana Git</a>
+        </div>
+    `).join("");
+}
+load();
+</script>
+
+</body>
+</html>

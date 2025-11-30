@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Giriş</title>
+<script src="api.js"></script>
+</head>
+<body>
+
+<h1>Giriş Yap</h1>
+
+<input id="email" placeholder="Email">
+<input id="password" type="password" placeholder="Şifre">
+<button onclick="login()">Giriş</button>
+
+<script>
+async function login() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    const res = await api("/api/login", "POST", { email, password });
+
+    if (res.ok) {
+        localStorage.token = res.token;
+        alert("Giriş başarılı!");
+        location.href = "index.html";
+    } else {
+        alert("Hatalı giriş");
+    }
+}
+</script>
+
+</body>
+</html>

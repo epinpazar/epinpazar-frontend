@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head><title>Kayıt</title><script src="api.js"></script></head>
+<body>
+
+<h1>Kayıt Ol</h1>
+
+<input id="name" placeholder="Ad">
+<input id="email" placeholder="Email">
+<input id="password" type="password" placeholder="Şifre">
+<button onclick="reg()">Kayıt Ol</button>
+
+<script>
+async function reg() {
+    const res = await api("/api/register","POST",{
+        name: name.value,
+        email: email.value,
+        password: password.value
+    });
+
+    if (res.ok) {
+        alert("Başarılı! Giriş yapabilirsiniz.");
+        location.href = "login.html";
+    } else {
+        alert("Email zaten kayıtlı olabilir.");
+    }
+}
+</script>
+
+</body>
+</html>

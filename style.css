@@ -1,0 +1,4 @@
+body { font-family: Arial; padding:20px; background:#f7f7f7; }
+input, textarea { display:block; margin:8px 0; width:300px; padding:6px; }
+.card { background:#fff; padding:10px; margin:10px 0; border-radius:6px; }
+img { width:200px; border-radius:6px; }
