@@ -1,4 +1,4 @@
-const API_BASE = "https://epinpazardemo.onrender.com";
+const API_BASE = "https://epinpazardemo.onrender.com/api";
 
 async function api(path, method = "GET", body = null, token = null) {
     const headers = { "Content-Type": "application/json" };
@@ -10,5 +10,5 @@ async function api(path, method = "GET", body = null, token = null) {
         body: body ? JSON.stringify(body) : null
     });
 
-    return res.json().catch(()=>({error:"parse error"}));
+    return res.json().catch(() => ({ error: "parse error" }));
 }
