@@ -1,4 +1,4 @@
-const API_BASE = "https://epinpazardemo.onrender.com/api";
+const API_BASE = "https://epinpazardemo.onrender.com";
 
 async function api(path, method = "GET", body = null, token = null) {
     const headers = { "Content-Type": "application/json" };
